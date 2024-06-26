@@ -1,3 +1,36 @@
+//after UI
+const rock = document.querySelector("#rock");
+const paper = document.querySelector("#paper");
+const scissors = document.querySelector("#scissors");
+
+const scoreHuman = document.querySelector("#scoreTableHuman")
+const scoreComputer = document.querySelector("#scoreTableComputer")
+let score = 0;
+
+const actionContainer = document.querySelector("#actionContainer")
+rock.addEventListener("click",()=>{
+    playRound(getComputerChoice(),"Rock")
+    score+=1
+
+})
+
+paper.addEventListener("click",()=>{
+    playRound(getComputerChoice(),"Paper")
+    score+=1
+})
+
+scissors.addEventListener("click",()=>{
+    playRound(getComputerChoice(),"Scissors")
+    score+=1
+})
+
+if(score ==5){
+    
+}
+
+
+
+
 //global variables to use in multiple places
 const moves = ["Rock", "Paper", "Scissors"];
 let computerScore = 0;
@@ -23,28 +56,55 @@ function getHumanChoice(){
 }
 //winning logic
 function playRound(computerChoice, humanChoice){
-        if(computerChoice == humanChoice){
-            console.log("Draw!")
-        }else if((computerChoice=="Rock" && humanChoice!="Scissors")||(computerChoice=="Paper"&&humanChoice!="Rock") || (computerChoice=="Scissors"&&humanChoice!="Paper")){
-            console.log("You win!");
-            humanScore++;
-        }else{
-            console.log("You lose!");
-            computerScore++;
-        }
-    }
+    const result = document.createElement("p");
+        if(score!=5){
+            if(computerChoice == humanChoice){
+                console.log("Draw!");
+                result.textContent = `You: ${humanChoice} + Computer: ${computerChoice} = Draw!`;
+            }else if((computerChoice=="Rock" && humanChoice!="Scissors")||(computerChoice=="Paper"&&humanChoice!="Rock") || (computerChoice=="Scissors"&&humanChoice!="Paper")){
+                console.log("You win!");
+                result.textContent = `You: ${humanChoice} + Computer: ${computerChoice} = You win!`;
+                result.style.color="green";
+                scoreHuman.textContent = Number(scoreHuman.textContent) +1
+                humanScore++;
+            }else{
+                console.log("You lose!");
+                result.textContent = `You: ${humanChoice} + Computer: ${computerChoice} = You lose!`;
+                result.style.color="red";
+                scoreComputer.textContent = Number(scoreComputer.textContent) +1
+                computerScore++;
+            }
+            
 
+        }else{
+            score=0;
+            const allChildren = document.querySelectorAll(".results")
+            for(let child of allChildren){
+                actionContainer.removeChild(child)
+            }
+            if(humanScore>computerScore){
+                result.textContent = "Game over: You are great at this game!"
+            }else if(computerScore>humanScore){
+                result.textContent = "Game over: You suck at this game!"
+            }else{
+                result.textContent = "Game over: That was a close one!"
+            }
+            result.style.color="teal";
+        }
+        result.classList.add("results")
+        actionContainer.appendChild(result)
+}
 
 //functions call and end message
-for(let i=0;i<=5;i++){
-    playRound(getComputerChoice(), getHumanChoice())
-}
-console.log("----------GAME OVER----------")
-    console.log(`Your score: ${humanScore} Computer score: ${computerScore}`)
-    if(humanScore>computerScore){
-        console.log("You are great at this game!")
-    }else if(computerScore>humanScore){
-        console.log("You suck at this game!")
-    }else{
-        console.log("That was a close one!")
-    }
+// for(let i=0;i<=5;i++){
+//     playRound(getComputerChoice(), getHumanChoice())
+// }
+// console.log("----------GAME OVER----------")
+//     console.log(`Your score: ${humanScore} Computer score: ${computerScore}`)
+//     if(humanScore>computerScore){
+//         console.log("You are great at this game!")
+//     }else if(computerScore>humanScore){
+//         console.log("You suck at this game!")
+//     }else{
+//         console.log("That was a close one!")
+//     }

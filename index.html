@@ -3,11 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <title>Main</title>
 </head>
 <body>
-    <h1>This is a console game please open your console!</h1>
-    <script src="game.js"></script>
+    <div id="bigContainer">
+        <div id="actionContainer">
+            <div id="header">
+                <h1 style="color: green;" id="scoreTableHuman">0</h1>
+                <h1 style="color: teal;">Lets begin!</h1>
+                <h1 style="color: red;" id="scoreTableComputer">0</h1>
+            </div>
+        </div>
+        <div id="buttonContainer">
+            <button id="rock">Rock</button>
+            <button id="paper">Paper</button>
+            <button id="scissors">Scissors</button>
+            <script src="game.js"></script>
+        </div>
+    </div>
     
 </body>
 </html>
