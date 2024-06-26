@@ -94,17 +94,3 @@ function playRound(computerChoice, humanChoice){
         result.classList.add("results")
         actionContainer.appendChild(result)
 }
-
-//functions call and end message
-// for(let i=0;i<=5;i++){
-//     playRound(getComputerChoice(), getHumanChoice())
-// }
-// console.log("----------GAME OVER----------")
-//     console.log(`Your score: ${humanScore} Computer score: ${computerScore}`)
-//     if(humanScore>computerScore){
-//         console.log("You are great at this game!")
-//     }else if(computerScore>humanScore){
-//         console.log("You suck at this game!")
-//     }else{
-//         console.log("That was a close one!")
-//     }
