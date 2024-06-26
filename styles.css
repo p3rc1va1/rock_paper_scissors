@@ -35,6 +35,8 @@ button{
     min-height: 40px;
     min-width: 100px;
     border-radius: 15px;
+    background-color: teal;
+    color: whitesmoke;
 }
 #header{
     display: flex;
